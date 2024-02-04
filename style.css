@@ -4,6 +4,7 @@
   --foreground-color: #ffffff;
   --background-color: rgb(0, 0, 31);
   --link-color: rgb(107, 255, 198);
+  --gradient: linear-gradient(45deg, #550039, #4e00a8, #002658);
 }
 
 * {
@@ -22,9 +23,24 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: var(--background-color);
+  background: var(--gradient);
+  background-size: 300%;
+  background-position: left;
   color: var(--foreground-color);
   padding: 15px;
+  animation: bg-animation 40s infinite;
+}
+
+@keyframes bg-animation {
+  0% {
+    background-position: left;
+  }
+  60% {
+    background-position: right;
+  }
+  100% {
+    background-position: left;
+  }
 }
 
 a {
@@ -41,7 +57,7 @@ button:disabled {
 
 .container {
   background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(2px);
+  /* backdrop-filter: blur(2px); */
   border-radius: 10px;
   padding: 15px;
   width: 100%;
