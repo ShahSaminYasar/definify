@@ -1,0 +1,270 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --foreground-color: #ffffff;
+  --background-color: rgb(0, 0, 31);
+  --link-color: rgb(107, 255, 198);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.2s;
+}
+
+body {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--background-color);
+  color: var(--foreground-color);
+  padding: 15px;
+}
+
+a {
+  color: var(--link-color);
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(2px);
+  border-radius: 10px;
+  padding: 15px;
+  width: 100%;
+  max-width: 450px;
+  height: 100%;
+  max-height: fit-content;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.4s;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3),
+    0px 2px 15px 0px rgba(0, 0, 0, 0.3);
+}
+
+.container h1 {
+  font-size: 34px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.welcome_text {
+  display: block;
+  font-size: 14px;
+  color: var(--foreground-color);
+  opacity: 50%;
+  text-align: left;
+  font-weight: 300;
+  margin: 15px 0px 5px;
+}
+
+.welcome_text.hidden {
+  display: none;
+}
+
+.search_bar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 5px 5px;
+  border-radius: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+.search_bar i {
+  font-size: 17px;
+  color: var(--foreground-color);
+  margin-left: 6px;
+}
+
+.search_bar input {
+  width: 100%;
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  border: none;
+  font-size: 18px;
+  color: var(--foreground-color);
+  outline: none;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.search_bar input::placeholder {
+  color: var(--foreground-color);
+  opacity: 50%;
+}
+
+.clearSearchButton {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.clearSearchButton i {
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 3px;
+  display: flex;
+  font-size: 13px;
+  color: var(--foreground-color);
+}
+
+.clearSearchButton.hidden {
+  display: none;
+}
+
+.loading {
+  max-height: 50px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.result_bar {
+  min-height: 80px;
+  margin-top: 15px;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.result_bar::-webkit-scrollbar {
+  width: 0px;
+}
+
+.loading.hidden,
+.result_bar.hidden {
+  min-height: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow-y: hidden;
+  transition: all 0.2s ease;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.result_bar__top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.result_bar__top #word {
+  font-size: 30px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.result_bar__top .phonetics_bar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.result_bar__top .phonetics_bar button {
+  padding: 3px 5px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: midnightblue;
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+  font-size: 15px;
+}
+
+.meanings_bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.meaning_card {
+  width: 100%;
+}
+
+.meaning_card .partOfSpeech {
+  font-size: 16px;
+  font-style: italic;
+  display: block;
+  color: var(--foreground-color);
+  margin-bottom: 5px;
+}
+
+.definitions {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.definition {
+  width: 100%;
+  padding: 7px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--foreground-color);
+}
+
+.definition p:nth-child(1) {
+  display: block;
+  font-size: 16px;
+}
+
+.definition p:nth-child(2) {
+  display: block;
+  opacity: 80%;
+  font-weight: 300;
+  font-size: 15px;
+  margin-top: 3px;
+}
+
+.synonyms,
+.antonyms {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.synonyms button,
+.antonyms button {
+  background: transparent;
+  border: none;
+  outline: none;
+  text-decoration: underline;
+  color: var(--link-color);
+  font-size: 15px;
+  font-style: italic;
+}
